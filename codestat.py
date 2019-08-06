@@ -15,6 +15,7 @@ class Stat:
     def __init__(self):
         self.number_of_structs = 0
         self.number_of_classes = 0
+        self.max_indentation = 0
 
 def collect_stat(f):
     s = Stat()
@@ -23,6 +24,8 @@ def collect_stat(f):
             s.number_of_classes += 1
         elif 'struct' in line:
             s.number_of_structs += 1
+        indentation = len(line) - len(line.lstrip())
+        s.max_indentation = max(s.max_indentation, indentation)
     return s
 
 def print_line():
@@ -34,6 +37,7 @@ def parse_file(f):
     s = collect_stat(f)
     print('structs:', s.number_of_structs)
     print('classes:', s.number_of_classes)
+    print('indent:', s.max_indentation)
     print()
     return s
 
