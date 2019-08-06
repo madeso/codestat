@@ -24,8 +24,9 @@ def collect_stat(f):
             s.number_of_classes += 1
         elif 'struct' in line:
             s.number_of_structs += 1
-        indentation = len(line) - len(line.lstrip())
-        s.max_indentation = max(s.max_indentation, indentation)
+        if line.strip() != '':
+            indentation = len(line) - len(line.lstrip())
+            s.max_indentation = max(s.max_indentation, indentation)
     return s
 
 def print_line():
