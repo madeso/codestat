@@ -51,7 +51,7 @@ def print_stat(s):
     print()
 
 def main():
-    parser = argparse.ArgumentParser(description='Manage my dot files.')
+    parser = argparse.ArgumentParser(description='codestat tool')
     parser.add_argument('files', type=argparse.FileType('r'), help='files', nargs='+')
     args = parser.parse_args()
 
